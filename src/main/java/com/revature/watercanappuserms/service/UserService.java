@@ -15,7 +15,6 @@ import com.revature.watercanappuserms.repository.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
-	@Transactional
 	public User registerProcess(RegisterInfo registerInfo) throws ServiceException {
 		
 		User findUser = userRepository.findByEmail(registerInfo.getEmail());
