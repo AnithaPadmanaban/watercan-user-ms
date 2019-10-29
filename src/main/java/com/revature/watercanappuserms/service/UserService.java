@@ -31,7 +31,7 @@ public class UserService {
 			userRepository.save(user);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ServiceException("Unable to register user");
+			throw new ServiceException("Unable to register");
 		}
 		return user;
 	}

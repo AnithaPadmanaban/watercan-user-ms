@@ -32,10 +32,10 @@ public class UserController {
 	public ResponseEntity<?> login(UserLoginInfo userLoginInfo) {
 		String errorMessage = null;
 		User user = new User();
-		
+
 		try {
 			user = userService.loginProcess(userLoginInfo);
-			
+
 		} catch (ServiceException e) {
 			errorMessage = e.getMessage();
 		}
@@ -46,28 +46,22 @@ public class UserController {
 			return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
 		}
 	}
-	
-	
-	
-	
-	
 
 	@PostMapping("register")
 	@ApiOperation("RegsterApi")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Register Success", response = Message.class),
 			@ApiResponse(code = 400, message = "Register Failure") })
-	public ResponseEntity<?> register(@RequestBody RegisterInfo registerInfo ) {
+	public ResponseEntity<?> register(@RequestBody RegisterInfo registerInfo) {
 		String result = null;
-		String message = null;
+
+		User user = null;
 		try {
-		
-			userService.registerProcess(registerInfo);
-			message = "Success";
+			user = userService.registerProcess(registerInfo);
 		} catch (ServiceException e) {
 			result = e.getMessage();
 		}
-		if (message != null) {
-			return new ResponseEntity<>(message, HttpStatus.OK);
+		if (user != null) {
+			return new ResponseEntity<>(user, HttpStatus.OK);
 		} else {
 			Message errorMessage = new Message(result);
 			return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
