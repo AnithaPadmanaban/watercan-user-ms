@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.watercanappuserms.dto.Message;
@@ -55,7 +56,7 @@ public class UserController {
 	@ApiOperation("RegsterApi")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Register Success", response = Message.class),
 			@ApiResponse(code = 400, message = "Register Failure") })
-	public ResponseEntity<?> register(RegisterInfo registerInfo ) {
+	public ResponseEntity<?> register(@RequestBody RegisterInfo registerInfo ) {
 		String result = null;
 		String message = null;
 		try {
