@@ -1,6 +1,7 @@
 package com.revature.watercanappuserms.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.watercanappuserms.dto.RegisterInfo;
 import com.revature.watercanappuserms.dto.UserLoginInfo;
@@ -8,6 +9,7 @@ import com.revature.watercanappuserms.exception.ServiceException;
 import com.revature.watercanappuserms.model.User;
 import com.revature.watercanappuserms.repository.UserRepository;
 
+@Service
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
