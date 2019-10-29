@@ -1,5 +1,7 @@
 package com.revature.watercanappuserms.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,7 @@ import com.revature.watercanappuserms.repository.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
-
+	@Transactional
 	public User registerProcess(RegisterInfo registerInfo) throws ServiceException {
 		
 		User findUser = userRepository.findByEmail(registerInfo.getEmail());
@@ -34,7 +36,7 @@ public class UserService {
 		}
 		return user;
 	}
-
+	@Transactional
 	public User loginProcess(UserLoginInfo userLoginInfo) throws ServiceException {
 		User user = null;
 		String email=userLoginInfo.getEmail();
