@@ -35,7 +35,8 @@ public class AdminController {
 		if (admin != null) {
 			return new ResponseEntity<>(admin, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+			Message message = new Message(errorMessage);
+			return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
 		}
 	}
 }
