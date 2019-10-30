@@ -31,12 +31,13 @@ public class UserController {
 			@ApiResponse(code = 400, message = "User Login Failure") })
 	public ResponseEntity<?> login(UserLoginInfo userLoginInfo) {
 		String errorMessage = null;
-		User user = new User();
+		User user = null;
 
 		try {
 			user = userService.loginProcess(userLoginInfo);
 
 		} catch (ServiceException e) {
+			e.printStackTrace();
 			errorMessage = e.getMessage();
 		}
 
