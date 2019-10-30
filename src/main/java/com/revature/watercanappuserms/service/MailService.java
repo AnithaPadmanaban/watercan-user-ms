@@ -2,10 +2,11 @@ package com.revature.watercanappuserms.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.revature.watercanappuserms.dto.MailDTO;
-
+@Service
 public class MailService {
 
 
@@ -18,4 +19,5 @@ public class MailService {
         ResponseEntity<Void> postForEntity = restTemplate.postForEntity(apiUrl+"/mail/registeruser", mailDTO, Void.class);
         System.out.println(postForEntity);
     }
+    
 }
