@@ -28,13 +28,9 @@ public class AdminController {
 		Admin admin = null;
 		try {
 			admin = adminService.adminLoginProcess(adminLoginInfo);
+			return new ResponseEntity<>(admin, HttpStatus.OK);
 		} catch (ServiceException e) {
 			errorMessage = e.getMessage();
-		}
-
-		if (admin != null) {
-			return new ResponseEntity<>(admin, HttpStatus.OK);
-		} else {
 			Message message = new Message(errorMessage);
 			return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
 		}
