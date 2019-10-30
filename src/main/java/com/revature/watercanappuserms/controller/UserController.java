@@ -43,7 +43,8 @@ public class UserController {
 		if (user != null) {
 			return new ResponseEntity<>(user, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+			Message message=new Message(errorMessage);
+			return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
 		}
 	}
 
