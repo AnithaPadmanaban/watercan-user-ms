@@ -29,7 +29,7 @@ public class UserController {
 	@ApiOperation("UserLoginApi")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "User Login Success", response = Message.class),
 			@ApiResponse(code = 400, message = "User Login Failure") })
-	public ResponseEntity<?> login(UserLoginInfo userLoginInfo) {
+	public ResponseEntity<?> login(@RequestBody UserLoginInfo userLoginInfo) {
 		String errorMessage = null;
 		User user = null;
 
