@@ -1,7 +1,7 @@
 spring:
     datasource:
         driverClassName: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://db.thewaterwallets:3306/watercanapp_user_db
+        url: jdbc:mysql://db.thewaterwallets.in:3306/watercanapp_user_db
         username: prod_user
         password: prod_user 
     flyway: 
