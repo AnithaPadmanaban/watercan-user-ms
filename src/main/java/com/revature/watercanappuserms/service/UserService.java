@@ -1,10 +1,7 @@
 package com.revature.watercanappuserms.service;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.revature.watercanappuserms.dto.MailDTO;
 import com.revature.watercanappuserms.dto.RegisterInfo;
 import com.revature.watercanappuserms.dto.UserLoginInfo;
