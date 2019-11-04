@@ -1,5 +1,6 @@
 package com.revature.watercanappuserms.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.revature.watercanappuserms.dto.MailDTO;
@@ -52,4 +53,14 @@ public class UserService {
 		}
 		return user;
 	}
+
+	public List<User> listAllUsers() throws ServiceException {
+		List<User> user;
+		user = userRepository.findAll();
+		if (user == null) {
+			throw new ServiceException("Sorry!!!, something went to wrong");
+		}
+		return user;
+	}
+
 }

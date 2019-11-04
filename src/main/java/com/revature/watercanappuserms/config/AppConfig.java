@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.revature.watercanappuserms.service.AdminService;
 import com.revature.watercanappuserms.service.UserService;
-import com.revature.watercanappuserms.service.ViewOrderCanService;
+
 
 @Configuration
 public class AppConfig {
@@ -18,8 +18,5 @@ public class AppConfig {
 		return new AdminService();
 	}
 	
-	@Bean
-	public ViewOrderCanService viewOrderCanService() {
-		return new ViewOrderCanService();
-	}
+	
 }
