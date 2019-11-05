@@ -9,6 +9,7 @@ import com.revature.watercanappuserms.dto.UserLoginInfo;
 import com.revature.watercanappuserms.exception.ServiceException;
 import com.revature.watercanappuserms.model.User;
 import com.revature.watercanappuserms.repository.UserRepository;
+import com.revature.watercanappuserms.validator.RegisterValidator;
 
 @Service
 public class UserService {
@@ -18,24 +19,33 @@ public class UserService {
 	private MailService mailservice;
 
 	public User registerProcess(RegisterInfo registerInfo) throws ServiceException {
+		RegisterValidator RegisterValidator = new RegisterValidator();
 
+		
+		User user = new User();
+		try {
 		User findUser = userRepository.findByEmail(registerInfo.getEmail());
 		if (findUser != null) {
 			throw new ServiceException("Email Id is already exist");
 		}
-		User user = new User();
+		
 		user.setName(registerInfo.getName());
 		user.setEmail(registerInfo.getEmail());
 		user.setPassword(registerInfo.getPassword());
 		user.setAddress(registerInfo.getAddress());
+		RegisterValidator.validateRegistration(user);
 
-		try {
+		
 			MailDTO mail = new MailDTO();
 			mail.setName(registerInfo.getName());
 			mail.setEmail(registerInfo.getEmail());
+			
 			userRepository.save(user);
 			mailservice.sendMail(mail);
-		} catch (Exception e) {
+		} catch(ServiceException e)
+		{
+			throw new ServiceException(e.getMessage());
+		}catch (Exception e) {
 			e.printStackTrace();
 			throw new ServiceException("Unable to register");
 		}
